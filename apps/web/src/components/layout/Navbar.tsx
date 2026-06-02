@@ -59,7 +59,7 @@ export function Navbar() {
       {/* Desktop sidebar */}
       <nav className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 bg-white border-r border-gray-200 p-4 z-40">
         <Link href="/feed" className="flex items-center gap-2 mb-8 px-2">
-          <img src="/logo.png" alt="Subly" className="h-8 w-auto" />
+          <img src="/logo.png" alt="Subly" className="h-24 w-auto" style={{clipPath:'inset(15%)'}} />
         </Link>
 
         <div className="flex-1 space-y-1">

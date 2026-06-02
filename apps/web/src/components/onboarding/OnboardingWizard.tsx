@@ -112,7 +112,7 @@ export function OnboardingWizard() {
   if (!intent) {
     return (
       <div className="bg-white rounded-2xl shadow-sm border w-full max-w-lg p-8 text-center">
-        <img src="/logo.png" alt="Subly" className="h-16 w-auto mx-auto mb-4" />
+        <img src="/logo.png" alt="Subly" className="h-52 w-auto mx-auto mb-4" style={{clipPath:'inset(12%)'}} />
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome to Subly</h2>
         <p className="text-gray-500 text-sm mb-8">What are you here to do?</p>
         <div className="grid grid-cols-2 gap-4">

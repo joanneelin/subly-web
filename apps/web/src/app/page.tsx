@@ -10,7 +10,7 @@ export default async function LandingPage() {
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Subly" className="h-8 w-auto" />
+          <img src="/logo.png" alt="Subly" className="h-24 w-auto" style={{clipPath:'inset(15%)'}} />
         </div>
         <div className="flex items-center gap-3">
           {user ? (

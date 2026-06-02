@@ -38,7 +38,7 @@ function SignInForm() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="bg-white rounded-2xl shadow-sm border p-8 w-full max-w-md">
         <div className="mb-8 text-center">
-          <img src="/logo.png" alt="Subly" className="h-16 w-auto mx-auto mb-4" />
+          <img src="/logo.png" alt="Subly" className="h-52 w-auto mx-auto mb-4" style={{clipPath:'inset(12%)'}} />
           <h1 className="text-2xl font-bold text-gray-900">Welcome back</h1>
           <p className="text-gray-500 text-sm mt-1">Sign in to your Subly account</p>
         </div>

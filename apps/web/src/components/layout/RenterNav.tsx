@@ -59,7 +59,7 @@ export function RenterNav({ name, email, hasHostAccount }: RenterNavProps) {
       <nav className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 bg-white border-r border-gray-200 p-4 z-40">
         <Link href="/rent/feed" className="flex items-center gap-2 mb-8 px-2">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="Subly" className="h-8 w-auto" />
+            <img src="/logo.png" alt="Subly" className="h-24 w-auto" style={{clipPath:'inset(15%)'}} />
             <span className="text-xs font-medium text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded-full">Renter</span>
           </div>
         </Link>
