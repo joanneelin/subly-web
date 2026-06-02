@@ -99,8 +99,8 @@ export function ListingForm({ userId, listing, onSuccess }: ListingFormProps) {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Select label="Unit type" options={UNIT_TYPES.map((u) => ({ value: u.value, label: u.label }))} value={form.unit_type} onChange={(e) => setForm((p) => ({ ...p, unit_type: e.target.value }))} />
-        <Select label="Gender preference" options={GENDER_PREFERENCES.map((g) => ({ value: g.value, label: g.label }))} value={form.gender_preference} onChange={(e) => setForm((p) => ({ ...p, gender_preference: e.target.value }))} />
+        <Select label="Unit type" options={UNIT_TYPES.map((u) => ({ value: u.value, label: u.label }))} value={form.unit_type} onChange={(e) => setForm((p) => ({ ...p, unit_type: e.target.value as any }))} />
+        <Select label="Gender preference" options={GENDER_PREFERENCES.map((g) => ({ value: g.value, label: g.label }))} value={form.gender_preference} onChange={(e) => setForm((p) => ({ ...p, gender_preference: e.target.value as any }))} />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
