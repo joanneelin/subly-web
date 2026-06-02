@@ -3,33 +3,28 @@ import { createServerClient } from '@/lib/supabase/server'
 import { ListingProfileView } from '@/components/profile/ListingProfileView'
 import { RenterProfileView } from '@/components/profile/RenterProfileView'
 
-interface ProfilePageProps {
-  params: { id: string }
-  searchParams: { listing?: string }
-}
-
-export default async function ProfilePage({ params, searchParams }: ProfilePageProps) {
+export default async function ProfilePage({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ listing?: string }> }) {
+  const { id } = await params
+  const { listing: listingId } = await searchParams
   const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   const { data: profile } = await supabase
     .from('profiles')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (!profile) notFound()
 
-  const isOwnProfile = user?.id === params.id
+  const isOwnProfile = user?.id === id
   const isLister = profile.role?.includes('lister')
 
-  if (searchParams.listing || isLister) {
-    const listingId = searchParams.listing
-
+  if (listingId || isLister) {
     const query = supabase
       .from('listings')
       .select('*')
-      .eq('user_id', params.id)
+      .eq('user_id', id)
       .eq('active', true)
 
     if (listingId) query.eq('id', listingId)
@@ -61,7 +56,7 @@ export default async function ProfilePage({ params, searchParams }: ProfilePageP
   const { data: renterPrefs } = await supabase
     .from('renter_preferences')
     .select('*')
-    .eq('user_id', params.id)
+    .eq('user_id', id)
     .maybeSingle()
 
   return (

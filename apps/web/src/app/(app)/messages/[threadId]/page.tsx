@@ -2,11 +2,8 @@ import { notFound } from 'next/navigation'
 import { createServerClient } from '@/lib/supabase/server'
 import { MessageThread } from '@/components/messages/MessageThread'
 
-interface ThreadPageProps {
-  params: { threadId: string }
-}
-
-export default async function ThreadPage({ params }: ThreadPageProps) {
+export default async function ThreadPage({ params }: { params: Promise<{ threadId: string }> }) {
+  const { threadId } = await params
   const supabase = await createServerClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -18,7 +15,7 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
       renter:profiles!threads_renter_id_fkey(*),
       listing:listings(id, title, rent, image_urls)
     `)
-    .eq('id', params.threadId)
+    .eq('id', threadId)
     .single()
 
   if (!thread) notFound()
@@ -27,7 +24,7 @@ export default async function ThreadPage({ params }: ThreadPageProps) {
   const { data: messages } = await supabase
     .from('messages')
     .select('*')
-    .eq('thread_id', params.threadId)
+    .eq('thread_id', threadId)
     .order('created_at', { ascending: true })
 
   const other = thread.lister_id === user!.id ? thread.renter : thread.lister
