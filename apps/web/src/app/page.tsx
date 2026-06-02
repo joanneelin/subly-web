@@ -10,10 +10,7 @@ export default async function LandingPage() {
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-sm">S</span>
-          </div>
-          <span className="text-xl font-bold text-gray-900">Subly</span>
+          <img src="/logo.png" alt="Subly" className="h-8 w-auto" />
         </div>
         <div className="flex items-center gap-3">
           {user ? (
